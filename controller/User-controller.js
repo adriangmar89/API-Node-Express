@@ -1,11 +1,11 @@
 // Requerimos el módulo bcrypt para encriptar contraseñas
 const bcrypt = require('bcrypt');
-// Requerimos el módulo jsonwebtoken para generar tokens JWT
+// Requerimos el modulo jsonwebtoken para generar tokens JWT
 const jwt = require('jsonwebtoken');
-// Requerimos la conexión a la base de datos
+// Requerimos la conexion a la base de datos
 const conexion = require('../database/BBDD.js');
 
-// Método para registrar un nuevo usuario
+// Metodo para registrar un nuevo usuario
 exports.register = async (req, res) => {
     // El compo de roll tiene que tener uno de estol valores (admin o user). Por defecto si no le pasas nada es user
     const { nombre, apellidos, email, password, rol } = req.body;
@@ -25,10 +25,10 @@ exports.register = async (req, res) => {
     });
 };
 
-// Método para iniciar sesión (login)
+// Metodo para iniciar sesion (login)
 exports.login = async (req, res) => {
     const { email, password } = req.body;
-    // Validación de entrada
+    // Validacion de entrada
     if (!email || !password) {
         return res.status(400).send('Email y contraseña son obligatorios.');
     }
@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
             return res.status(400).send('Email o contraseña incorrectos.');
         }
         const user = rows[0];
-        // Comparar la contraseña ingresada con la almacenada (encriptada)
+        // Comparar la password ingresada con la almacenada (encriptada)
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).send('Email o contraseña incorrectos.');
