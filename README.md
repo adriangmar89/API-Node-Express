@@ -1,6 +1,6 @@
 # API Node.js Express con MySQL
 
-Esta es una API RESTful construida con Node.js, Express y MySQL. El objetivo de esta API es gestionar usuarios y países, con protección mediante autenticación de token para algunas rutas.
+Esta es una API REST construida con Node.js, Express y MySQL. El objetivo de esta API es gestionar usuarios y países, con protección mediante autenticación de token para algunas rutas.
 
 ## Comandos configurados
 
