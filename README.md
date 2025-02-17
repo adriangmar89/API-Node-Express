@@ -1,85 +1,66 @@
+# API Node.js Express con MySQL
 
+Esta es una API RESTful construida con Node.js, Express y MySQL. El objetivo de esta API es gestionar usuarios y países, con protección mediante autenticación de token para algunas rutas.
 
-Manual para Manejo de Proyectos Node.js
+## Comandos configurados
 
-1. Instalación de Dependencias - npm install
+- **`npm install`**: Instala las dependencias necesarias para el proyecto.
+- **`npm audit fix`**: Revisa y corrige vulnerabilidades de seguridad en las dependencias.
+- **`node app.js`**: Ejecuta la aplicación en modo producción.
+- **`npm run start`**: Ejecuta la aplicación en modo desarrollo.
 
-Este comando se utiliza para instalar todas las dependencias necesarias que están especificadas en el archivo package.json de tu proyecto. Esto asegura que tu entorno esté listo para ejecutar la aplicación y que todas las bibliotecas necesarias estén presentes.
+## Rutas de la API
 
-Uso:
-npm install
+### Rutas de usuarios
 
-¿Qué hace?
-- Descarga e instala las dependencias (paquetes) listadas en el archivo package.json.
-- Crea una carpeta llamada node_modules donde se almacenarán todas las dependencias instaladas.
+- **POST /register**: Registra un nuevo usuario.
+- **POST /login**: Inicia sesión con un usuario registrado y obtiene un token JWT.
 
-Cuando usarlo:
-- Siempre que clones un proyecto nuevo o cuando agregues nuevas dependencias a tu package.json (como cuando ejecutas npm install <package-name>).
+### Rutas de países (Protegidas)
 
----
+- **GET /paises**: Obtiene una lista de países almacenados en la base de datos.
+- **POST /paises**: Crea un nuevo país en la base de datos. (Requiere autenticación)
+- **PUT /paises/:id**: Actualiza un país existente. (Requiere autenticación)
+- **DELETE /paises/:id**: Elimina un país de la base de datos. (Requiere autenticación)
 
-2. Auditoría de Seguridad - npm audit fix
+### Ruta raíz
 
-Este comando se usa para revisar la seguridad de las dependencias instaladas y corregir posibles vulnerabilidades encontradas en ellas. npm audit muestra las vulnerabilidades conocidas, y npm audit fix intenta resolverlas automáticamente.
+- **GET /**: Muestra un mensaje de bienvenida a la API.
 
-Uso:
-npm audit fix
+## Requisitos
 
-¿Qué hace?
-- Analiza las dependencias instaladas en tu proyecto.
-- Identifica y arregla (cuando es posible) las vulnerabilidades de seguridad en esas dependencias.
+- **Node.js**: Asegúrate de tener Node.js instalado en tu máquina.
+- **MySQL**: Necesitarás tener MySQL configurado para ejecutar la base de datos. Puedes crear la base de datos utilizando el archivo `bbdd_api.sql`.
 
-Cuando usarlo:
-- Después de ejecutar npm install para asegurar que todas las dependencias estén actualizadas y sean seguras.
-- Si ves vulnerabilidades reportadas al ejecutar npm install o npm audit.
+## Instalación
 
----
+1. Clona este repositorio en tu máquina local:
 
-3. Modo Producción - node app.js
+    ```bash
+    git clone <url_del_repositorio>
+    cd <nombre_del_proyecto>
+    ```
 
-Este comando se usa para ejecutar la aplicación en un entorno de producción. En general, este modo ejecuta la aplicación Node.js sin las configuraciones o herramientas de desarrollo activas.
+2. Instala las dependencias:
 
-Uso:
-node app.js
+    ```bash
+    npm install
+    ```
 
-¿Qué hace?
-- Inicia la aplicación Node.js directamente usando el archivo app.js (o el archivo de entrada especificado).
-- Ejecuta el código de la aplicación en el entorno de producción, sin herramientas de desarrollo como el hot-reloading.
+3. Configura tu base de datos utilizando el archivo `bbdd_api.sql`.
 
-Cuando usarlo:
-- Cuando estés listo para ejecutar tu aplicación en un entorno de producción, por ejemplo, en un servidor o en un entorno de despliegue.
+4. Configura las variables de entorno en el archivo `.env`. Asegúrate de incluir al menos la clave secreta para JWT y las credenciales de MySQL.
 
----
+5. Inicia el servidor en modo desarrollo:
 
-4. Modo Desarrollo - npm run start
+    ```bash
+    npm run start
+    ```
 
-Este comando se usa para iniciar la aplicación en modo de desarrollo. Generalmente, el comando npm run start se configura en el archivo package.json para iniciar la aplicación con características adicionales como hot-reloading, debuggers y otras herramientas de desarrollo.
+## Uso
 
-Uso:
-npm run start
+Una vez que el servidor esté en ejecución, puedes interactuar con la API utilizando herramientas como **Postman** o **cURL** para hacer peticiones HTTP.
 
-¿Qué hace?
-- Ejecuta el script definido en el archivo package.json bajo la sección "scripts". Por lo general, se configura para iniciar el servidor con herramientas como nodemon, que reinicia automáticamente el servidor cuando detecta cambios en el código fuente.
-- Utiliza configuraciones especiales de desarrollo como la carga dinámica de módulos o el monitoreo de archivos.
+## Contribución
 
-Cuando usarlo:
-- Durante el desarrollo activo de tu aplicación. Esto facilita la prueba de cambios sin tener que reiniciar manualmente el servidor.
-
----
-
-Resumen de Comandos
-
-| Comando                | Descripción                                        |
-|------------------------|----------------------------------------------------|
-| npm install            | Instala las dependencias del proyecto.             |
-| npm audit fix          | Revisa y corrige vulnerabilidades de seguridad.    |
-| node app.js            | Ejecuta la aplicación en modo producción.          |
-| npm run start          | Ejecuta la aplicación en modo desarrollo.          |
-
----
-
-Consejos adicionales:
-- Entorno de desarrollo: Asegúrate de usar herramientas como nodemon o webpack para facilitar el desarrollo en modo local.
-- Entorno de producción: Siempre que vayas a desplegar una aplicación, asegúrate de haber ejecutado npm install --production para instalar solo las dependencias necesarias en producción (sin herramientas de desarrollo).
-
-Si tienes alguna otra pregunta o necesitas ayuda adicional, no dudes en preguntar. ¡Buena suerte con tu proyecto!
+Las contribuciones son bienvenidas. Si tienes alguna mejora o corrección, por favor abre un *pull request*.
