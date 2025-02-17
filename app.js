@@ -1,15 +1,3 @@
-// Comandos utilizados:
-// Comando para inicializar el proyecto de node: npm init -y
-// Comando para instalar express: npm i express
-// Comando para instalar dotenv: npm i dotenv
-// Comando para instalar mysql: npm i mysql
-// Comando para instalar nodemon en modo de developer: npm i -D nodemon
-// Comando para optener todas las rutas de la api: npm install express-list-endpoints
-
-// Comandos para iniciar el proyecto:
-// En modo produccion: node app.js
-// En modo developer: npm run start
-
 // Requerimos en modulo de express
 const express = require('express');
 // Creamos el objeto del servidor
